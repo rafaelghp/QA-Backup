@@ -1,0 +1,354 @@
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class busca_filtroPorRegiao_teste {
+	FirefoxDriver driver =  new FirefoxDriver();
+	private DSL dsl;
+	@Before
+	public void inicializa(){
+        driver =  new FirefoxDriver();
+		driver.get("https://hmlplat.econodata.com.br/#/");
+		dsl = new DSL(driver);
+		driver.manage().window().maximize();
+		dsl.escreveCss("form input","rafaelghp1@gmail.com");
+		dsl.escreveCss("form input[type='password']","connect");
+		dsl.clickCss("form button");
+	}
+	
+	@After
+	public void finaliza() {
+		driver.quit();	}
+	
+	@Test
+	public  void testeRegiaoRs() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","RS-RIO GRANDE DO SUL");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "41.509");
+		
+		
+}
+	@Test
+	public  void testeRegiaoAc() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","AC-ACRE");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "41.509");
+		
+}
+	@Test
+	public  void testeRegiaoAl() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","AL-ALAGOAS");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "163.714");		
+}
+	@Test
+	public  void testeRegiaoAp() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","AP-AMAPÁ");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "38.923");		
+}
+	@Test
+	public  void testeRegiaoAm() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","AM-AMAZONAS");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "171.410");		
+}
+	@Test
+	public  void testeRegiaoBa() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","BA-BAHIA");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "960.686");		
+}
+	@Test
+	public  void testeRegiaoCe() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","CE-CEARÁ");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "555.237");		
+}
+	@Test
+	public  void testeRegiaoDf() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","DF-DISTRITO FEDERAL");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "324.935");		
+}
+	@Test
+	public  void testeRegiaoEs() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","ES-ESPÍRITO SANTO");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "407.482");		
+}
+	@Test
+	public  void testeRegiaoGo() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","GO-GOÍAS");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "620.014");		
+}
+	@Test
+	public  void testeRegiaoMa() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","MA-MARANHÃO");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "263.933");		
+}
+	@Test
+	public  void testeRegiaoMt() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","MT-MATO GROSSO");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "330.159");		
+}
+	@Test
+	public  void testeRegiaoMs() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","MS-MATO GROSSO DO SUL");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "249.394");		
+}
+	@Test
+	public  void testeRegiaoMg() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","MG-MINAS GERAIS");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "1.965.371");		
+}
+	@Test
+	public  void testeRegiaoPa() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","PA-PARÁ");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "354.448");		
+}
+	@Test
+	public  void testeRegiaoPb() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","PB-PARAÍBA");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "229.319");
+}
+	@Test
+	public  void testeRegiaoPr() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","PR-PARANÁ");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "1.289.436");		
+}
+	@Test
+	public  void testeRegiaoPe() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","PE-PERNANBUCO");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "524.556");		
+}
+	@Test
+	public  void testeRegiaoPi() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","PI-PIAUÍ");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "168.805");		
+}
+	@Test
+	public  void testeRegiaoRj() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","RJ-RIO DE JANEIRO");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "1.726.230");		
+}
+	@Test
+	public  void testeRegiaoRn() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","RN-RIO GRANDE DO NORTE");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "223.187");		
+}
+	@Test
+	public  void testeRegiaoRo() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","RO-RONDÔNIA");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "223.187");		
+}
+	@Test
+	public  void testeRegiaoRr() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","Rr-RORAIMA");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "30.334");
+}
+	@Test
+	public  void testeRegiaoSc() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","SC-SANTA CATARINA");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "852.801");		
+}
+	@Test
+	public  void testeRegiaoSp() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","SP-SÃO PAULO");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "5.685.732");		
+}
+	@Test
+	public  void testeRegiaoSe() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","SE-SERGIPE");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "110.716");		
+	}
+	
+	@Test
+	public  void testeRegiaoTo() {
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","TO-TOCANTINS");
+		dsl.clicaId("btn-filtrar");
+		dsl.espera();
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "0");
+		Assert.assertNotEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "18.821.561");
+		Assert.assertEquals(dsl.pegaValor("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[1]/div[2]/div[1]"), "120.694");		
+}
+}

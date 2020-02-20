@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BuscaFiltroBairro" project="PlataformaEconodata" tests="13" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="BuscaFiltroBairro" incomplete="true">
+    <testsuite name="[0]" incomplete="true">
+      <testcase name="testeFiltroBairro[0]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[1]" incomplete="true">
+      <testcase name="testeFiltroBairro[1]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[2]" incomplete="true">
+      <testcase name="testeFiltroBairro[2]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[3]" incomplete="true">
+      <testcase name="testeFiltroBairro[3]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[4]" incomplete="true">
+      <testcase name="testeFiltroBairro[4]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[5]" incomplete="true">
+      <testcase name="testeFiltroBairro[5]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[6]" incomplete="true">
+      <testcase name="testeFiltroBairro[6]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[7]" incomplete="true">
+      <testcase name="testeFiltroBairro[7]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[8]" incomplete="true">
+      <testcase name="testeFiltroBairro[8]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[9]" incomplete="true">
+      <testcase name="testeFiltroBairro[9]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[10]" incomplete="true">
+      <testcase name="testeFiltroBairro[10]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[11]" incomplete="true">
+      <testcase name="testeFiltroBairro[11]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+    <testsuite name="[12]" incomplete="true">
+      <testcase name="testeFiltroBairro[12]" classname="BuscaFiltroBairro" incomplete="true"/>
+    </testsuite>
+  </testsuite>
+</testrun>

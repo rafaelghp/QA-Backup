@@ -1,0 +1,19 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class DSL {
+	
+		private WebDriver driver;
+		public DSL(FirefoxDriver driver2) {
+			this.driver = driver;
+		}
+
+		public void escreveCss(String id_campo, String texto) {
+			driver.findElement(By.cssSelector(id_campo)).sendKeys(texto);
+		}
+	
+		public void clickCss(String campo) {
+			driver.findElement(By.cssSelector(campo)).click();
+		}
+}

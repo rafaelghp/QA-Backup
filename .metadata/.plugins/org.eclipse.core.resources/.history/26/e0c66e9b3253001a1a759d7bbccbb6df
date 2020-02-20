@@ -1,0 +1,118 @@
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.openqa.selenium.firefox.FirefoxDriver;
+@RunWith(Parameterized.class)
+public class BuscaFiltroCidade {
+	FirefoxDriver driver =  new FirefoxDriver();
+	private DSL dsl;
+	private buscaEmpresaPage page;
+	@Parameter
+	public String estado;
+	@Parameter(value=1)
+	public String cidade;
+	@Parameter(value=2)
+	public String resultado;
+	@Parameter(value=3)
+	public String cidadeRes;
+	@Before
+	public void inicializa() throws InterruptedException{
+		driver.get("https://hmlplat.econodata.com.br/#/login");
+		dsl = new DSL(driver);
+		page = new buscaEmpresaPage(driver);
+		driver.manage().window().maximize();
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+		Thread.sleep(6000);
+		dsl.clicaSidebar("Empresas");
+		Thread.sleep(4000);
+		page.regiao();
+		Thread.sleep(1000);
+	}
+	@After	
+	public void finaliza() throws InterruptedException {
+			driver.quit();
+			Thread.sleep(1000);
+			}
+	
+	@Parameters
+	public static Collection<Object[]> getCollection(){
+		return Arrays.asList(new Object[][]{
+			{"AC-ACRE","RIO BRANCO - AC","25.629","RIO BRANCO"},					//0
+			{"AC-ACRE","BRASILÉIA - AC","1.414","BRASILEIA"},						//1
+			{"AL-ALAGOAS","MACEIÓ - AL","77.446","MACEIO"},							//2
+			{"AL-ALAGOAS","JARAMATAIA - AL","154","JARAMATAIA"},					//3
+			{"AP-AMAPÁ","PORTO GRANDE - AP","805","PORTO GRANDE"},					//4
+			{"AP-AMAPÁ","MACAPÁ - AP","28.091","MACAPA"},							//5
+			{"AM-AMAZONAS","MANAUS - AM","124.224","MANAUS"},						//6
+			{"AM-AMAZONAS","MAUÉS - AM","2.020","MAUES"},							//7
+			{"BA-BAHIA","SALVADOR - BA","275.316","SALVADOR"},						//8
+			{"BA-BAHIA","SAÚDE - BA","595","SAUDE"},								//9
+			{"CE-CEARÁ","FORTALEZA - CE","254.460","FORTALEZA"},					//10
+			{"CE-CEARÁ","EUSÉBIO - CE","7.573","EUSEBIO"},							//11
+			{"ES-ESPÍRITO SANTO","VITÓRIA - ES","55.888","VITORIA"},				//12
+			{"ES-ESPÍRITO SANTO","VIANA - ES","7.279","VIANA"},						//13
+			{"GO-GOIÁS","GOIÂNIA - GO","195.565","GOIANIA"},						//14
+			{"GO-GOIÁS","ITAPACI - GO","1.575","ITAPACI"},							//15
+			{"MA-MARANHÃO","RAPOSA - MA","1.252","RAPOSA"},							//16
+			{"MA-MARANHÃO","SÃO LUÍS - MA","84.041","SÃO LUIS"},					//17
+			{"MT-MATO GROSSO","CUIABÁ - MT","82.030","CUIABA"},						//18
+			{"MT-MATO GROSSO","DENISE - MT","397","DENISE"},						//19
+			{"MS-MATO GROSSO DO SUL","CAMPO GRANDE - MS","102.713","CAMPO GRANDE"}, //20
+			{"MS-MATO GROSSO DO SUL","CAMAPUÃ - MS","1.544","CAMAPUA"},				//21
+			{"MG-MINAS GERAIS","BELO HORIZONTE - MG","373.180","BELO HORIZONTE"},	//22
+			{"MG-MINAS GERAIS","ARAÇAÍ - MG","176","ARACAI"},						//23
+			{"PA-PARÁ","BELÉM - PA","101.378","BELEM"},								//24
+			{"PA-PARÁ","BONITO - PA","303","BONITO"},								//25
+			{"PB-PARAÍBA","JOÃO PESSOA - PB","77.502","JOAO PESSOA"},				//26
+			{"PB-PARAÍBA","JURU - PB","291","JURU"},								//27
+			{"PR-PARANÁ","CURITIBA - PR","314.674","CURITIBA"},						//28
+			{"PR-PARANÁ","CÉU AZUL - PR","1.215","CEU AZUL"},						//29
+			{"PE-PERNAMBUCO","RECIFE - PE","154.735","RECIFE"},						//30
+			{"PE-PERNAMBUCO","XEXÉU - PE","392","XEXEU"},							//31
+			{"PI-PIAUÍ","TERESINA - PI","70.414","TERESINA"},						//32
+			{"PI-PIAUÍ","ACAUÃ - PI","150","ACAUA"},								//33
+			{"RJ-RIO DE JANEIRO","RIO DE JANEIRO - RJ","826.572","RIO DE JANEIRO"},	//34
+			{"RJ-RIO DE JANEIRO","ITAGUAÍ - RJ","11.403","ITAGUAI"},				//35
+			{"RN-RIO GRANDE DO NORTE","NATAL - RN","86.179","NATAL"},				//36
+			{"RN-RIO GRANDE DO NORTE","CARAÚBAS - RN","930","CARAUBAS"},			//37
+			{"RO-RONDÔNIA","PORTO VELHO - RO","38.943","PORTO VELHO"},				//38
+			{"RO-RONDÔNIA","JI-PARANÁ - RO","11.386","JI-PARANA"},					//39
+			{"RR-RORAIMA","BOA VISTA- RR","24.705","BOA VISTA"},					//40
+			{"RR-RORAIMA","CANTÁ- RR","421","CANTA"},								//41
+			{"RS-RIO GRANDE DO SUL","PORTO ALEGRE - RS","231.599","PORTO ALEGRE"},	//42
+			{"RS-RIO GRANDE DO SUL","VIAMÃO - RS","22.591","VIAMAO"},				//43
+			{"SC-SANTA CATARINA","FLORIANÓPOLIS - SC","89.567","FLORIANOPOLIS"},	//44
+			{"SC-SANTA CATARINA","ILHOTA - SC","1.742","ILHOTA"},					//45
+			{"SP-SÃO PAULO","SÃO PAULO - SP","1.789.827","SAO PAULO"},				//46
+			{"SP-SÃO PAULO","SANTOS - SP","61.639","SANTOS"},						//47
+			{"SE-SERGIPE","ARACAJU - SE","54.875","ARACAJU"},						//48
+			{"SE-SERGIPE","ARAUÁ - SE","287","ARAUA"},								//49
+			{"TO-TOCANTINS","PALMAS - TO","37.950","PALMAS"},						//50
+			{"TO-TOCANTINS","PARANÃ - TO","437","PARANA"},							//51
+		});	
+	}
+		@Test
+		public void testeFiltroCidade() throws InterruptedException {
+			page.setEstado(estado);
+			page.setCidade(cidade);
+			page.atualizarPesquisa();
+			Thread.sleep(2000);
+			Assert.assertNotEquals(page.resultado(), "0");
+			Assert.assertNotEquals(page.resultado(), "19.538.383");
+			Assert.assertEquals(page.resultado(), resultado);
+			Assert.assertTrue(page.verificaCidade(cidadeRes));
+		}
+		
+	}
+		
+

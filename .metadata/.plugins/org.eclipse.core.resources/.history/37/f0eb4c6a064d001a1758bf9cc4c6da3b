@@ -1,0 +1,67 @@
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.openqa.selenium.firefox.FirefoxDriver;
+@RunWith(Parameterized.class)
+public class buscaFiltroEstado {
+	FirefoxDriver driver =  new FirefoxDriver();
+	private DSL dsl;
+	private buscaEmpresaPage page;
+	private hmlLogin login;
+	
+	@Parameter
+	public String estado;
+	@Parameter(value=1)
+	public String resultado;
+	
+	
+	@Before
+	public void inicializa() throws InterruptedException{
+		driver.get("https://hmlplat.econodata.com.br/#/login");
+		dsl = new DSL(driver);
+		page = new buscaEmpresaPage(driver);
+		driver.manage().window().maximize();
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+		Thread.sleep(5000);
+		dsl.clicaSidebar("Empresas");
+		Thread.sleep(1000);
+		page.regiao();
+		Thread.sleep(1000);
+		
+		
+	}
+	
+	@After	public void finaliza() throws InterruptedException {
+		driver.quit();
+		Thread.sleep(1000);}
+	
+	
+	@Parameters
+	public static Collection<Object[]> getCollection(){
+		return Arrays.asList(new Object[][]{
+			{"AC-ACRE","43.059"},
+			{"AL-ALAGOAS","171.026"}
+		});
+		
+	}
+	
+	@Test
+	public void testeFiltroEstado() throws InterruptedException {
+		page.setEstado(estado);
+		page.atualizarPesquisa();
+		dsl.espera();
+		Assert.assertNotEquals(page.resultado(), "0");
+		Assert.assertNotEquals(page.resultado(), "19.538.383");
+		Assert.assertEquals(page.resultado(), resultado);
+	}
+}

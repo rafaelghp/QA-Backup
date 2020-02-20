@@ -1,0 +1,96 @@
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.openqa.selenium.firefox.FirefoxDriver;
+@RunWith(Parameterized.class)
+public class buscaFiltroEstado {
+	FirefoxDriver driver =  new FirefoxDriver();
+	private DSL dsl;
+	private buscaEmpresaPage page;
+	@Parameter
+	public String estado;
+	@Parameter(value=1)
+	public String resultado;
+	@Parameter(value=2)
+	public String UF;
+	
+	
+	@Before
+	public void inicializa() throws InterruptedException{
+		driver.get("https://hmlplat.econodata.com.br/#/login");
+		dsl = new DSL(driver);
+		page = new buscaEmpresaPage(driver);
+		driver.manage().window().maximize();
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+		Thread.sleep(3000);
+		dsl.clicaSidebar("Empresas");
+		Thread.sleep(2000);
+		page.regiao();
+		Thread.sleep(2000);
+		
+		
+	}
+	
+	@After	public void finaliza() throws InterruptedException {
+		driver.quit();
+		Thread.sleep(1000);}
+	
+	
+	@Parameters
+	public static Collection<Object[]> getCollection(){
+		return Arrays.asList(new Object[][]{
+			{"AC-ACRE","43.059","AC"},
+			{"AL-ALAGOAS","171.026","AL"},
+			{"AP-AMAPÁ","40.630","AP"},
+			{"AM-AMAZONAS","180.059","AM"},
+			{"BA-BAHIA","996.266","BA"},
+			{"CE-CEARÁ","575.554","CE"},
+			{"DF-DISTRITO FEDERAL","338.530"},
+			{"ES-ESPÍRITO SANTO","423.120"},
+			{"GO-GOIÁS","645.602"},
+			{"MA-MARANHÃO","274.507"},
+			{"MT-MATO GROSSO","342.602"},
+			{"MS-MATO GROSSO DO SUL","259.358"},
+			{"MG-MINAS GERAIS","2.036.723"},
+			{"PA-PARÁ","370.538"},
+			{"PB-PARAÍBA","239.172"},
+			{"PR-PARANÁ","1.334.241"},
+			{"PE-PERNAMBUCO","548.136"},
+			{"PI-PIAUÍ","175.152"},
+			{"RJ-RIO DE JANEIRO","1.801.729"},
+			{"RN-RIO GRANDE DO NORTE","231.980"},
+			{"RO-RONDÔNIA","123.538"},
+			{"RR-RORAIMA","31.522"},
+			{"RS-RIO GRANDE DO SUL","1.331.716"},
+			{"SC-SANTA CATARINA","887.186"},
+			{"SP-SÃO PAULO","5.895.429"},
+			{"SE-SERGIPE","115.749"},
+			{"TO-TOCANTINS","125.259"},
+			
+		});
+		
+	}
+	
+	@Test
+	public void testeFiltroEstado() throws InterruptedException {
+		page.setEstado(estado);
+		Thread.sleep(2000);
+		page.atualizarPesquisa();
+		Thread.sleep(2000);
+		Assert.assertNotEquals(page.resultado(), "0");
+		Assert.assertNotEquals(page.resultado(), "19.538.383");
+		Assert.assertEquals(page.resultado(), resultado);
+		Assert.assertTrue(page.verificaEstado(estado));
+
+	}
+}

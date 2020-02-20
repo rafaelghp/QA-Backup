@@ -1,0 +1,21 @@
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class testeteste {
+
+	
+	FirefoxDriver driver =  new FirefoxDriver();
+	@Test
+	public void teste1() throws InterruptedException {
+	driver.get("https://hmlplat.econodata.com.br/#/login");
+	DSL dsl = new DSL(driver);
+	buscaEmpresaPage page = new buscaEmpresaPage(driver);
+	driver.manage().window().maximize();
+	dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+	dsl.escreveId("plat-login-senha","frango");
+	dsl.clicId("plat-login-botao-entrar");
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("/html/body/div[3]/div/div/nav/section/ul/li[7]/a")).click();
+}
+}

@@ -1,0 +1,33 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class testeLogin {
+	FirefoxDriver driver =  new FirefoxDriver();
+	private DSL dsl;
+	@Before
+	public void inicializa(){
+        driver =  new FirefoxDriver();
+		driver.get("https://hmlplat.econodata.com.br/#/");
+		dsl = new DSL(driver);
+	}
+	
+	@After
+	public void finaliza() {
+		driver.quit();
+	}
+	
+	@Test
+	public  void teste() {
+		dsl.escreveCss("form input","rafaelghp1@gmail.com");
+		dsl.escreveCss("form input[type='password']","connect");
+		dsl.clickCss("form button");
+		dsl.espera();
+		dsl.clickXpath("/html/body/div[3]/div/div/nav/section/ul/li[6]/a");
+		dsl.clickXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/header/a");
+		dsl.escreveXpath("/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input","RS");
+	}
+
+}

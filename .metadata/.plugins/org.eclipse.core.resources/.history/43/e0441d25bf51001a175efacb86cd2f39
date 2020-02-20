@@ -1,0 +1,86 @@
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+@RunWith(Parameterized.class)
+public class buscaFiltroendereco {
+	FirefoxDriver driver =  new FirefoxDriver();
+	private DSL dsl;
+	private buscaEmpresaPage page;
+	@Parameter
+	public  String estado;
+	@Parameter(value=1)
+	public String cidade;
+	@Parameter(value=2)
+	public String bairro;
+	@Parameter(value=3)
+	public String logradouro;
+	@Parameter(value=4)
+	public String cep;
+	@Parameter(value=5)
+	public String de;
+	@Parameter(value=6)
+	public String ate;
+	@Parameter(value=7)
+	public String resultado;
+	@Before
+	public void inicializa() throws InterruptedException{
+		driver.get("https://hmlplat.econodata.com.br/#/login");
+		dsl = new DSL(driver);
+		page = new buscaEmpresaPage(driver);
+		driver.manage().window().maximize();
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+		Thread.sleep(2000);
+		dsl.clicaSidebar("Empresas");
+		Thread.sleep(10000);
+		page.regiao();
+		Thread.sleep(2000);
+	}
+	@After	
+	public void finaliza() throws InterruptedException {
+			driver.quit();
+			Thread.sleep(5000);
+			}
+	
+	@Parameters
+	public static Collection<Object[]> getCollection(){
+		return Arrays.asList(new Object[][]{
+			{"RS","PORTO ALEGRE","auxiliadora","carlos gomes","90480003","0","500","382"},
+		});
+	}
+		
+		@Test
+		public void testeFiltroBairro() throws InterruptedException {
+			page.setEstado(estado);
+			page.setCidade(cidade);
+			page.setBairro(bairro);
+			page.setLogradouro(logradouro);
+			page.setCep(cep);
+			page.setNumDe(de);
+			page.setNumAte(ate);
+			page.atualizarPesquisa();
+			Thread.sleep(2000);
+			Assert.assertNotEquals(page.resultado(), "0");
+			Assert.assertNotEquals(page.resultado(), "19.538.383");
+			Assert.assertEquals(page.resultado(), resultado);
+			page.detalheEmpresa();
+			Thread.sleep(2000);
+			Assert.assertTrue(page.verificalog(logradouro));
+			Assert.assertTrue(page.verificaCep(cep));
+		}
+	
+	
+	
+
+}

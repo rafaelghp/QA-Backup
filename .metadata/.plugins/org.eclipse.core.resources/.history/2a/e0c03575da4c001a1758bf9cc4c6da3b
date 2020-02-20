@@ -1,0 +1,11 @@
+
+
+public class hmlplatLogin {
+	private DSL dsl;
+	
+	public void entrar() throws InterruptedException{
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+	}
+}

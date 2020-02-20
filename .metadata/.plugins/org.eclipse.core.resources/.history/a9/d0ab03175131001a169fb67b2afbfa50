@@ -1,0 +1,26 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TesteGoogle {
+	FirefoxDriver driver =  new FirefoxDriver();
+	@Before
+	public void inicializa(){
+        driver =  new FirefoxDriver();
+		driver.get("https://hmlplat.econodata.com.br/#/");
+	}
+	
+	@After
+	public void finaliza() {
+		driver.quit();
+	}
+	
+	@Test
+	public  void teste() {
+		driver.findElementByCssSelector("form input").sendKeys("rafaelghp1@gmail.com");
+		driver.findElementByCssSelector("form input[type='password']").sendKeys("connect");
+		driver.findElementByCssSelector("form button").click();
+	}
+
+}

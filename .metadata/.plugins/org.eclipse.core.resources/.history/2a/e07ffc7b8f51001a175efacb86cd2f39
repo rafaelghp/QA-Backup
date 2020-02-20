@@ -1,0 +1,115 @@
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+import org.openqa.selenium.firefox.FirefoxDriver;
+@RunWith(Parameterized.class)
+public class BuscaFiltroCidade {
+	FirefoxDriver driver =  new FirefoxDriver();
+	private DSL dsl;
+	private buscaEmpresaPage page;
+	@Parameter
+	public String estado;
+	@Parameter(value=1)
+	public String cidade;
+	@Parameter(value=2)
+	public String resultado;
+	@Before
+	public void inicializa() throws InterruptedException{
+		driver.get("https://hmlplat.econodata.com.br/#/login");
+		dsl = new DSL(driver);
+		page = new buscaEmpresaPage(driver);
+		driver.manage().window().maximize();
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+		Thread.sleep(6000);
+		dsl.clicaSidebar("Empresas");
+		Thread.sleep(4000);
+		page.regiao();
+		Thread.sleep(1000);
+	}
+	@After	
+	public void finaliza() throws InterruptedException {
+			driver.quit();
+			Thread.sleep(1000);
+			}
+	
+	@Parameters
+	public static Collection<Object[]> getCollection(){
+		return Arrays.asList(new Object[][]{
+			{"AC-ACRE","RIO BRANCO - AC","25.629"},
+			{"AC-ACRE","BRASILÉIA - AC","1.414"},
+			{"AL-ALAGOAS","MACEIÓ - AL","77.446"},
+			{"AL-ALAGOAS","JARAMATAIA - AL","154"},
+			{"AP-AMAPÁ","PORTO GRANDE - AP","805"},
+			{"AP-AMAPÁ","MACAPÁ - AP","28.091"},
+			{"AM-AMAZONAS","MANAUS - AM","124.224"},
+			{"AM-AMAZONAS","MAUÉS - AM","2.020"},
+			{"BA-BAHIA","SALVADOR - BA","275.316"},
+			{"BA-BAHIA","SAÚDE - BA","595"},
+			{"CE-CEARÁ","FORTALEZA - CE","254.460"},
+			{"CE-CEARÁ","EUSÉBIO - CE","7.573"},
+			{"ES-ESPÍRITO SANTO","VITÓRIA - ES","55.888"},
+			{"ES-ESPÍRITO SANTO","VIANA - ES","7.279"},
+			{"GO-GOIÁS","GOIÂNIA - GO","195.565"},
+			{"GO-GOIÁS","ITAPACI - GO","1.575"},
+			{"MA-MARANHÃO","RAPOSA - MA","1.252"},
+			{"MA-MARANHÃO","SÃO LUÍS - MA","84.041"},
+			{"MT-MATO GROSSO","CUIABÁ - MT","82.030"},
+			{"MT-MATO GROSSO","DENISE - MT","397"},
+			{"MS-MATO GROSSO DO SUL","CAMPO GRANDE - MS","102.713"},
+			{"MS-MATO GROSSO DO SUL","CAMAPUÃ - MS","1.544"},
+			{"MG-MINAS GERAIS","BELO HORIZONTE - MG","373.180"},
+			{"MG-MINAS GERAIS","ARAÇAÍ - MG","176"},
+			{"PA-PARÁ","BELÉM - PA","101.378"},
+			{"PA-PARÁ","BONITO - PA","303"},
+			{"PB-PARAÍBA","JOÃO PESSOA - PB","77.502"},
+			{"PB-PARAÍBA","JURU - PB","291"},
+			{"PR-PARANÁ","CURITIBA - PR","314.674"},
+			{"PR-PARANÁ","CÉU AZUL - PR","1.215"},
+			{"PE-PERNAMBUCO","RECIFE - PE","154.735"},
+			{"PE-PERNAMBUCO","XEXÉU - PE","392"},
+			{"PI-PIAUÍ","TERESINA - PI","70.414"},
+			{"PI-PIAUÍ","ACAUÃ - PI","150"},
+			{"RJ-RIO DE JANEIRO","RIO DE JANEIRO - RJ","826.572"},
+			{"RJ-RIO DE JANEIRO","ITAGUAÍ - RJ","11.403"},
+			{"RN-RIO GRANDE DO NORTE","NATAL - RN","86.179"},
+			{"RN-RIO GRANDE DO NORTE","CARAÚBAS - RN","930"},
+			{"RO-RONDÔNIA","PORTO VELHO - RO","38.943"},
+			{"RO-RONDÔNIA","JI-PARANÁ - RO","11.386"},
+			{"RR-RORAIMA","BOA VISTA- RR","24.705"},
+			{"RR-RORAIMA","CANTÁ- RR","421"},
+			{"RS-RIO GRANDE DO SUL","PORTO ALEGRE - RS","231.599"},
+			{"RS-RIO GRANDE DO SUL","VIAMÃO - RS","22.591"},
+			{"SC-SANTA CATARINA","FLORIANÓPOLIS - SC","89.567"},
+			{"SC-SANTA CATARINA","ILHOTA - SC","1.742"},
+			{"SP-SÃO PAULO","SÃO PAULO - SP","1.789.827"},
+			{"SP-SÃO PAULO","SANTOS - SP","61.639"},
+			{"SE-SERGIPE","ARACAJU - SE","54.875"},
+			{"SE-SERGIPE","ARAUÁ - SE","287"},
+			{"TO-TOCANTINS","PALMAS - TO","37.950"},
+			{"TO-TOCANTINS","PARANÃ - TO","437"},
+		});
+	}
+		@Test
+		public void testeFiltroCidade() throws InterruptedException {
+			page.setEstado(estado);
+			page.setCidade(cidade);
+			page.atualizarPesquisa();
+			dsl.espera();
+			Assert.assertNotEquals(page.resultado(), "0");
+			Assert.assertNotEquals(page.resultado(), "19.538.383");
+			Assert.assertEquals(page.resultado(), resultado);
+		}
+		
+	}
+		
+
