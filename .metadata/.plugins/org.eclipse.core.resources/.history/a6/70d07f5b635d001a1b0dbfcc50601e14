@@ -1,0 +1,21 @@
+package page;
+
+import Teste.core.BasePage;
+import Teste.core.DriverFactory;
+
+public class LoginPage extends BasePage {
+
+		public void acessaPlataforma() {
+			DriverFactory.getDriver().get("https://hmlplat.econodata.com.br/#/login");
+			
+		}
+		public void setEmail(String Email) throws InterruptedException {
+			dsl.escreveId("plat-login-email",Email);
+		}
+		public void setSenha(String Senha) throws InterruptedException {
+			dsl.escreveEnterId("plat-login-senha", Senha);
+		}
+		public void entrar() {
+			dsl.clicaId("plat-login-botao-entrar");
+		}
+}		

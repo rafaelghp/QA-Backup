@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.openqa.selenium.WebDriver"/>
-<fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="org.junit.Assert"/>
 <fullyQualifiedTypeName name="org.openqa.selenium.By.ByPartialLinkText"/>
 <fullyQualifiedTypeName name="junit.framework.Assert"/>
@@ -9,4 +8,21 @@
 <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
 <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.firefox.FirefoxDriver"/>
+<fullyQualifiedTypeName name="page.buscaEmpresaPage"/>
+<fullyQualifiedTypeName name="Teste.core.BaseTest"/>
+<fullyQualifiedTypeName name="Test.BuscaFiltroCidade"/>
+<fullyQualifiedTypeName name="Test.BuscaFiltroBairro"/>
+<fullyQualifiedTypeName name="Test.buscaFiltroEstado"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.support.ui.Select"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.OutputType"/>
+<fullyQualifiedTypeName name="com.gargoylesoftware.htmlunit.javascript.host.file.File"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
+<fullyQualifiedTypeName name="Test.buscaFiltroendereco"/>
+<fullyQualifiedTypeName name="Test.BuscaFiltroPalavraChave"/>
+<fullyQualifiedTypeName name="Teste.core.DriverFactory"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.chrome.ChromeDriver"/>
 </qualifiedTypeNameHistroy>

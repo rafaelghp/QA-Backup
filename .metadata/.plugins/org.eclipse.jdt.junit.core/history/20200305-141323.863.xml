@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BuscaFiltroDtAbertura" project="PlataformaEconodata" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="Test.BuscaFiltroDtAbertura" time="58.126">
+    <testsuite name="[0]" time="29.717">
+      <testcase name="testeFiltroDtAbertura[0]" classname="Test.BuscaFiltroDtAbertura" time="29.717"/>
+    </testsuite>
+    <testsuite name="[1]" time="28.409">
+      <testcase name="testeFiltroDtAbertura[1]" classname="Test.BuscaFiltroDtAbertura" time="28.409"/>
+    </testsuite>
+  </testsuite>
+</testrun>

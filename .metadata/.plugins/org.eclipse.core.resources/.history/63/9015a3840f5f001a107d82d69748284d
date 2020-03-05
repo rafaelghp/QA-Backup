@@ -1,0 +1,25 @@
+package Suites;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+import Test.BuscaFiltroBairro;
+import Test.BuscaFiltroCidade;
+import Test.BuscaFiltroPalavraChave;
+import Test.buscaFiltroEstado;
+import Test.buscaFiltroendereco;
+import Test.buscaSetorCnae;
+
+@RunWith(Suite.class)
+@SuiteClasses({
+	buscaFiltroEstado.class,
+	BuscaFiltroCidade.class,
+	BuscaFiltroBairro.class,
+	buscaFiltroendereco.class,
+	BuscaFiltroPalavraChave.class,
+	buscaSetorCnae.class,
+	
+})
+public class suiteTeste {
+
+}

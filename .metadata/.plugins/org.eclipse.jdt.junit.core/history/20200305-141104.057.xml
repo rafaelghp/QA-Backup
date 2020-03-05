@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BuscaFiltroCapSocial" project="PlataformaEconodata" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="Test.BuscaFiltroCapSocial" time="51.358">
+    <testsuite name="[0]" time="27.248">
+      <testcase name="testeFiltroCapSocial[0]" classname="Test.BuscaFiltroCapSocial" time="27.248"/>
+    </testsuite>
+    <testsuite name="[1]" time="11.667">
+      <testcase name="testeFiltroCapSocial[1]" classname="Test.BuscaFiltroCapSocial" time="11.667"/>
+    </testsuite>
+    <testsuite name="[2]" time="12.443">
+      <testcase name="testeFiltroCapSocial[2]" classname="Test.BuscaFiltroCapSocial" time="12.443"/>
+    </testsuite>
+  </testsuite>
+</testrun>

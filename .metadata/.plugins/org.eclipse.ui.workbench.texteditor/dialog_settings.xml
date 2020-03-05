@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="24.705"/>
+		<item key="selection" value="DriverFactory.getDriver()."/>
 		<list key="findhistory">
+			<item value="DriverFactory().getDriver()."/>
+			<item value="getDriver()."/>
+			<item value="getDriver"/>
+			<item value="driver."/>
 			<item value="24.705"/>
 			<item value="31.522"/>
 			<item value="275.316"/>
@@ -16,6 +20,10 @@
 			<item value="dsl.escreveXpath(&quot;/html/body/div[3]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/div/div/div[1]/div[2]/input&quot;,"/>
 		</list>
 		<list key="replacehistory">
+			<item value="DriverFactory.getDriver()."/>
+			<item value="DriverFactory().getDriver()."/>
+			<item value="getDriver()."/>
+			<item value="get"/>
 			<item value="Assert.assertEquals(dsl.pegaValor(&quot;qtd-registros&quot;),"/>
 			<item value="dsl.escreveEnterId(&quot;busca-filtro-estados&quot;,"/>
 		</list>

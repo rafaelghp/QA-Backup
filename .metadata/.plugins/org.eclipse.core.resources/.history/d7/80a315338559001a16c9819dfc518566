@@ -1,0 +1,70 @@
+package Test;
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import Teste.core.BaseTest;
+import Teste.core.DSL;
+import Teste.core.DriverFactory;
+import page.buscaEmpresaPage;
+@RunWith(Parameterized.class)
+public class BuscaFiltroSocio extends BaseTest {
+	private DSL dsl;
+	private buscaEmpresaPage page;
+	@Parameter
+	public String cnae;
+	@Parameter(value=1)
+	public String resultado;
+	@Parameter(value=2)
+	public String cnaeres;
+	
+	@Before
+	public void inicializa() throws InterruptedException{
+		DriverFactory.getDriver().get("https://hmlplat.econodata.com.br/#/login");
+		dsl = new DSL();
+		page = new buscaEmpresaPage();
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+		Thread.sleep(2000);
+		dsl.clicaSidebar("Empresas");
+		Thread.sleep(2000);
+		page.setor();
+		
+		
+	}
+	
+	@Parameters
+	public static Collection<Object[]> getCollection(){
+		return Arrays.asList(new Object[][]{
+			{"C-10","1.679.498","C-10"},
+			{"J-61","49.357","J-61"},
+			{"L-6822-6","25.703","L-6822-6"},
+			{"S-9521-5/00","43.419","S-9521-5/00"},
+		});
+	}
+	
+	
+	@Test
+	public void testeFiltroCnae() throws InterruptedException {
+		page.setCnae(cnae);
+		Thread.sleep(000);
+		page.atualizarPesquisa();
+		Thread.sleep(2000);
+		Assert.assertNotEquals(page.resultado(), "0");
+		Assert.assertNotEquals(page.resultado(), "19.538.383");
+		Assert.assertEquals(page.resultado(), resultado);
+		Assert.assertTrue(page.verificaCnae(cnaeres));
+		
+	}
+	
+	
+	
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="buscaFiltroendereco (1)" project="PlataformaEconodata" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="Test.buscaFiltroendereco" time="49.744">
+    <testsuite name="[0]" time="49.744">
+      <testcase name="testeFiltroBairro[0]" classname="Test.buscaFiltroendereco" time="49.744"/>
+    </testsuite>
+  </testsuite>
+</testrun>

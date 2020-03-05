@@ -1,0 +1,68 @@
+package Test;
+
+
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
+
+import Teste.core.DSL;
+import Teste.core.DriverFactory;
+import page.buscaEmpresaPage;
+
+@RunWith(Parameterized.class)
+public class BuscaFiltroOptanteSimples{
+	private DSL dsl;
+	private buscaEmpresaPage page;
+)
+	
+	
+	@Before
+	public void inicializa() throws InterruptedException{
+		DriverFactory.getDriver().get("https://hmlplat.econodata.com.br/#/login");
+		dsl = new DSL();
+		page = new buscaEmpresaPage();
+		dsl.escreveId("plat-login-email","rafael.s.lima92@hotmail.com");
+		dsl.escreveId("plat-login-senha","frango");
+		dsl.clicId("plat-login-botao-entrar");
+		Thread.sleep(2000);
+		dsl.clicaSidebar("Empresas");
+		Thread.sleep(2000);
+		page.perfilDeEmpresa();
+		
+		
+	}
+	
+
+	
+	@Test
+	public void testeOptante() {
+		
+		page.somenteMatriz();
+		Assert.assertNotEquals(page.resultado(), "0");
+		Assert.assertNotEquals(page.resultado(), "19.538.383");
+		Assert.assertEquals(page.resultado(), "18.453.711");
+	}
+	
+	
+	@Test
+	public void testeFiltroQtdFilial() throws InterruptedException {
+		page.filiais();
+		page.setQtdFiliaisDe(num1);
+		page.setQtdFiliaisAte(num2);
+		page.atualizarPesquisa();
+		Thread.sleep(2000);
+		Assert.assertNotEquals(page.resultado(), "0");
+		Assert.assertNotEquals(page.resultado(), "19.538.383");
+		Assert.assertEquals(page.resultado(), resultado);
+	
+}
+	
+}

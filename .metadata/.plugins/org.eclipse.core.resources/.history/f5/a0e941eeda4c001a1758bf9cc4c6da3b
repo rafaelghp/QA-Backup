@@ -1,9 +1,0 @@
-
-
-public class hmlplatLogin {
-	private DSL dsl;
-	
-	public void entrar() throws InterruptedException{
-		
-	}
-}

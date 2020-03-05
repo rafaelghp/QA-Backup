@@ -1,0 +1,231 @@
+package page;
+import org.openqa.selenium.WebElement;
+
+import Teste.core.BasePage;
+
+public class buscaEmpresaPage extends BasePage{
+	
+	
+	public void setEstado(String Estado) throws InterruptedException {
+		dsl.escreveEnterId("busca-filtro-estados", Estado);
+		
+		
+	}
+	public void setCidade(String Cidade) throws InterruptedException {
+		dsl.escreveEnterId("busca-filtro-cidade", Cidade);
+		
+	}
+	public void setBairro(String bairro) throws InterruptedException{
+		dsl.escreveEnterId("busca-filtro-bairro", bairro);
+	}
+	public void setLogradouro(String logradouro) throws InterruptedException {
+		dsl.escreveId("busca-filtro-logradouro", logradouro);
+	}
+	public void setCep(String cep) throws InterruptedException{
+		dsl.escreveId("busca-filtro-cep", cep);
+	}
+	public void setNumDe(String numero)throws InterruptedException{
+		dsl.escreveId("busca-filtro-numero-de", numero);
+	}
+	public void setNumAte(String numero)throws InterruptedException{
+		dsl.escreveId("busca-filtro-numero-ate", numero);
+	}
+	public void setCnae(String cnae) throws InterruptedException{
+		dsl.escreveEnterId("busca-filtro-cnae", cnae);
+	}
+	
+	public void setDtDe(String data) throws InterruptedException {
+		dsl.escreveId("busca-filtro-dt-abertura-de", data);
+	}
+	
+	public void setDtAte(String data)throws InterruptedException {
+		dsl.escreveId("busca-filtro-dt-abertura-ate", data);
+	}
+	public void setKeyword(String keyword) throws InterruptedException {
+		dsl.escreveenterXpath("//*[@id=\"accordion2\"]/div/div/div[2]/div/div/ul/li", keyword);
+		dsl.clicaId("btn-filtrar");
+	}
+	
+	public void setAssertividade(String asserti) {
+		dsl.clicaXpath(asserti);
+	}
+	
+	public void setSocio(String nome) throws InterruptedException {
+		dsl.escreveId("busca-filtro-nome-socio", nome);
+	}
+	
+	public void setCapSocialDe(String cap) throws InterruptedException{
+		dsl.escreveId("busca-filtro-cptsocial-de", cap);
+	}
+	
+	public void setCapSocialAte(String cap)throws InterruptedException{
+		dsl.escreveId("busca-filtro-cptsocial-ate", cap);
+	}
+	
+	public void setQtdFiliaisDe(String num ) throws InterruptedException {
+		dsl.escreveXpath("//*[@id=\"busca-filtro-qtd-filiais-de\"]", num);
+	}
+	
+	public void setQtdFiliaisAte(String num) {
+		dsl.escreveXpath("/html/body/div[1]/div/main/div/div/div[2]/div/div/div[2]/div[1]/div[1]/div/div[5]/div/div/div/div[4]/div/fieldset/div/div[2]/input[2]", num);
+	}
+	
+	public void porteNominal() {
+		dsl.selecionaCombo("/html/body/div[1]/div/main/div/div/div[2]/div/div/div[2]/div/div[1]/div/div[3]/div/div/div/div[1]/select", 1);
+	}
+	public void atualizarPesquisa() {
+		dsl.clicaId("btn-filtrar");
+	}
+	public void regiao() {
+		dsl.clicaId("filtro-regiao");
+	}
+	public void setor() {
+		dsl.clicaId("filtro-setor");
+	}
+	public void porte() {
+		dsl.clicaId("filtro-dados-presumidos");
+	}
+	
+	public void assertividade() {
+		dsl.clicaId("filtro-assertividade");
+	}
+	
+	public void perfilDeEmpresa(){
+		dsl.clicaId("filtro-perfil-empresa");
+	}
+	
+	public void socio() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[1]/a/h6");
+	}
+	
+	public void dataAbertrua() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[2]/a/h6");
+	}
+	
+	public void capitalSocial() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[3]/a/h6");
+	}
+	
+	public void filiais() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[4]/a");
+	}
+	public void somenteMatriz() {
+		dsl.clicaId("busca-filtro-matriz-filial");
+	}
+	
+	public void optantePeloSimples() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[5]/a");
+	}
+	
+	public void enquadramentoPorte() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[6]/a/h6");
+	}
+	public void naturezaJuridica() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[7]/a/h6");
+	}
+	public void classificacaoJuridica() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[8]/a/h6");
+	}
+	public void website() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[9]/a");
+	}
+	public void extras() {
+		dsl.clicaXpath("//*[@id=\"accordion4form\"]/header[10]/a");
+	}
+	public String resultado() {
+		return dsl.pegaValor("qtd-registros");
+	}
+	public boolean verificaEstado(String estado) {
+       WebElement element = dsl.retornaXpath("//*[@id=\"main-table\"]/tbody/tr[1]/td[3]/div/div[3]");
+       if(element != null) {
+    	   String[] elementArray = element.getText().split(", ");
+    	   return elementArray[1].toLowerCase().contains(estado.toLowerCase());
+       }
+	   return false;
+	}
+	public boolean verificaCidade(String cidade) {
+	       WebElement element = dsl.retornaXpath("//*[@id=\"main-table\"]/tbody/tr[1]/td[3]/div/div[3]");
+	       if(element != null) {
+	    	   String[] elementArray = element.getText().split(", ");
+	    	   return elementArray[0].toLowerCase().contains(cidade.toLowerCase());
+	       }
+		   return false;
+		}
+	public void detalheEmpresa() {
+		dsl.clicaXpath("//*[@id=\"main-table\"]/tbody/tr[1]/td[7]/div/div/button");
+	}
+	public boolean verificalog(String logradouro) {
+		WebElement element = dsl.retornaXpath("//*[@id=\"collapse-resumo\"]/div/div[2]/div[3]/span");
+		if(element !=null) {
+				String [] elementArray = element.getText().split(", ");
+				return elementArray[0].toLowerCase().contains(logradouro.toLowerCase());	
+		}
+		return false;
+	}
+	public boolean verificaCep(String cep) {
+		WebElement element = dsl.retornaXpath("//*[@id=\"collapse-resumo\"]/div/div[2]/div[3]/span");
+		if(element !=null) {
+				String [] elementArray = element.getText().split(", ");
+				return elementArray[3].toLowerCase().contains(cep.toLowerCase());	
+		}
+		return false;
+	}	
+	public boolean verificaCnae(String cnae) {
+		WebElement element = dsl.retornaXpath("//*[@id=\"main-table\"]/tbody/tr[1]/td[5]/div[1]");
+		if(element !=null) {
+				String elementTx = element.getText();
+				return elementTx.toLowerCase().contains(cnae.toLowerCase());	
+		}
+		return false;
+	}	
+	
+	
+public boolean verificaBairro(String bairro) {
+	boolean check = false;
+	WebElement element = dsl.retornaXpath("//*[@id=\"collapse-resumo\"]/div/div[2]/div[2]/span");
+	WebElement element2 = dsl.retornaXpath("//*[@id=\"collapse-resumo\"]/div/div[2]/div[3]/span");
+	System.out.println(element.getText());
+	System.out.println(element2.getText());
+	if (element != null) {
+		String elementTX = element.getText();
+		check = elementTX.toLowerCase().contains(bairro.toLowerCase());
+		System.out.println(check);
+		if (check = true ) {
+			return check;
+		}
+		else if (element2 != null) {
+			String elementTX2 = element2.getText();
+			check = elementTX2.toLowerCase().contains(bairro.toLowerCase());
+			System.out.println(check);
+			return check;
+		}
+		return false;
+			
+	}
+	else 
+		return false;
+}
+
+public boolean verificaKeyword(String keyword) {
+	boolean check = false;
+	WebElement element = dsl.retornaXpath("//*[@id=\"collapse-resumo\"]/div/div[2]/div[1]/h4");
+	WebElement element2 = dsl.retornaXpath("//*[@id=\"collapse-resumo\"]/div/div[2]/div[2]/span");
+	if (element != null) {
+		String elementTX = element.getText();
+		check = elementTX.toLowerCase().contains(keyword.toLowerCase());
+		if (check = true ) {
+			return check;
+		}
+		else if (element2 != null) {
+			String elementTX2 = element2.getText();
+			return check = elementTX2.toLowerCase().contains(keyword.toLowerCase());
+		}
+			return false;
+			
+	}
+	else 
+		return false;
+}
+	
+	
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="buscaFiltroEstado (1)" project="PlataformaEconodata" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="Test.buscaFiltroEstado" time="134.14">
+    <testsuite name="[0]" time="42.383">
+      <testcase name="testeFiltroEstado[0]" classname="Test.buscaFiltroEstado" time="42.383"/>
+    </testsuite>
+    <testsuite name="[1]" time="55.696">
+      <testcase name="testeFiltroEstado[1]" classname="Test.buscaFiltroEstado" time="55.696"/>
+    </testsuite>
+    <testsuite name="[2]" time="36.061">
+      <testcase name="testeFiltroEstado[2]" classname="Test.buscaFiltroEstado" time="36.061"/>
+    </testsuite>
+  </testsuite>
+</testrun>

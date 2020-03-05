@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BuscaFiltroMatrizFilial" project="PlataformaEconodata" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="Test.BuscaFiltroMatrizFilial" time="53.823">
+    <testsuite name="[0]" time="28.839">
+      <testcase name="testeFiltroQtdFilial[0]" classname="Test.BuscaFiltroMatrizFilial" time="28.839"/>
+    </testsuite>
+    <testsuite name="[1]" time="12.367">
+      <testcase name="testeFiltroQtdFilial[1]" classname="Test.BuscaFiltroMatrizFilial" time="12.367"/>
+    </testsuite>
+    <testsuite name="[2]" time="12.617">
+      <testcase name="testeFiltroQtdFilial[2]" classname="Test.BuscaFiltroMatrizFilial" time="12.617"/>
+    </testsuite>
+  </testsuite>
+</testrun>
